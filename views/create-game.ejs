@@ -6,10 +6,27 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>Create your game here!</h1>
+    <h1>Add your game here!</h1>
     <!-- SideNote: Keep a link for other stuff (navbar)  -->
     <a href></a>
 
-    <form action="/games" method="post"></form>
+    <form action="/games" method="post">
+      <label>Game Name: </label>
+      <input name="gameName" type="text" />
+        <br>
+      <label>Platform:</label>
+      <input name="platform" type="text" />
+        <br>
+      <label>Genre:</label>
+      <input name="genre" type="text" />
+        <br>
+      <label>Hours Played:</label>
+      <input name="hoursPlayed" type="number" />
+        <br>
+      <label>Completed:</label>
+      <input name="completed" type="boolean" />
+
+        <button>Submit</button>
+    </form>
   </body>
 </html>

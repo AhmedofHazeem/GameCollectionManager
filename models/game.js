@@ -23,3 +23,7 @@ const gameSchema = new mongoose.Schema({
     max: 5,
   },
 });
+
+const Game = mongoose.model("Game", gameSchema)
+
+module.exports = Game
