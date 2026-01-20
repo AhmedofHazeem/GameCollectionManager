@@ -11,6 +11,8 @@ const isSignedIn = require("./middleware/is-signed-in.js");
 const passUserToView = require("./middleware/pass-user-to-view.js");
 const methodOverride = require("method-override");
 
+const gamesController = require("./controllers/game.routes.js");
+
 app.use(express.static("public")); // my app will serve all static files from public folder
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan("dev"));
@@ -40,6 +42,7 @@ connectToDB(); // connect to database
 // Routes go here
 app.use("/auth", authController);
 app.use("/", indexController);
+app.use("/games", gamesController);
 
 // PROTECTED ROUTES:
 app.use(isSignedIn);
