@@ -15,7 +15,7 @@ router.get("/create", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const gameCreated = await Game.create(req.body);
+  await Game.create(req.body);
   //add a display or alert that shows that game added successfully.
   res.redirect("/games/create");
 });
