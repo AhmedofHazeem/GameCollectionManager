@@ -50,5 +50,9 @@ router.put("/cars/:id", async (req, res) => {
 });
 
 //Deleting a game (by ID too) -- DELETE
+router.post("/:id/delete", async (req, res) => {
+  await Game.findByIdAndDelete(req.params.id);
+  res.redirect("/");
+});
 
 module.exports = router;
