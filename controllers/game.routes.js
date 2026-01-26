@@ -25,11 +25,6 @@ router.get("/allgames", async (req, res) => {
   res.render("all-games.ejs", { games });
 });
 
-router.get("/:id", async (req, res) => {
-  const games = await Game.findById(req.params.id);
-  res.render("/game-details.ejs", { games });
-});
-
 //showing one game to the user + its properties
 router.get("/show", async (req, res) => {
   const oneGame = await Game.find();
@@ -40,13 +35,17 @@ router.get("/show", async (req, res) => {
 
 router.get("/:id/edit", async (req, res) => {
   const games = await Game.findById(req.params.id);
-  (res.render("edit-game.ejs"), { games });
+  res.render("edit-game.ejs", { games });
 });
 
-//updating a game (by ID) -- PUT
-router.put("/cars/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
   await Game.findByIdAndUpdate(req.params.id);
-  res.redirect("/games");
+  res.redirect("/games/${req.params.id}");
+});
+
+router.get("/:id", async (req, res) => {
+  const games = await Game.findById(req.params.id);
+  res.render("game-details.ejs", { games });
 });
 
 //Deleting a game (by ID too) -- DELETE

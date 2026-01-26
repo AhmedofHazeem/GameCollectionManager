@@ -6,6 +6,16 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>Edit your car</h1>
+    <h1>Edit your game details</h1>
+    <label>Game Name</label>
+    <input name="gameName" value="<%= game.gameName %>" />
+
+    <label>Platform</label>
+    <input name="platform" value="<$= game.platform %>" />
+
+    <label>Completed</label>
+    <input type="checkbox" name="completed" value="true" <%= game.completed ? "checked" : "" %> >
+    <!-- The ? in html (or ejs here) is a basic if-else statement. "checked" turns the checkbox on, and the : "" basically does nothing.  -->
+     <!-- Basically, we are rendering checked, only if game.completed is true. -->
   </body>
 </html>
