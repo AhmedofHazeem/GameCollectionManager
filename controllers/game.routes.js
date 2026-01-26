@@ -43,7 +43,7 @@ router.put("/:id", async (req, res) => {
   res.redirect("/games/${req.params.id}");
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/:id/detail", async (req, res) => {
   const games = await Game.findById(req.params.id);
   res.render("game-details.ejs", { games });
 });

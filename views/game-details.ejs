@@ -3,12 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title><%= games.gameName %> | Details</title>
   </head>
   <body>
-    <h1>Game Details</h1>
-    <!-- <% games.forEach((game) => { %>
+    <h1><%= games.gameName %></h1>
 
-    <% }) %> -->
+    <p><strong>Platform: </strong> <%= games.platform %></p>
+    <p><strong>Genre:</strong><%= games.genre || "Not specified" %></p>
+    <p><strong>Hours played: </strong> <%= games.hoursPlayed ?? 0 %></p>
   </body>
 </html>

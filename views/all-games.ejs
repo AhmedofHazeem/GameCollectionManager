@@ -11,7 +11,7 @@
     <ul>
         <% games.forEach((aGame) => { %>
             <li>
-                <a href="/games/<%=aGame._id%>"><%= aGame.gameName %></a>
+                <a href="/games/<%=aGame._id%>/detail" method="get"><%= aGame.gameName %></a>
             </li>
             <form action="/games/<%=aGame._id%>/edit" method="post">
               <button>Edit</button>
@@ -19,6 +19,7 @@
             <form action="/games/<%=aGame._id%>/delete" method="post">
               <button>Delete</button>
             </form>
+            <form action="/games/<%=aGame._id%>/"
             
             <% }) %>
     </ul>
