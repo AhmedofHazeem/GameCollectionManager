@@ -7,14 +7,31 @@
   </head>
   <body>
     <h1>Edit your game details</h1>
+
+    <a href="/games/<%=games._id%>/detail">Go Back</a>
+
+    <form action="/games/<%= games._id%>/edit" method="post">
+    <br><br>
+
     <label>Game Name:</label>
     <input type="text" name="gameName" value="<%= games.gameName %>" />
+
+    <br><br>
 
     <label>Platform:</label>
     <input type="text" name="platform" value="<%= games.platform %>" />
 
+    <br><br>
+
+    <label>Genre:</label>
+    <input type="text" name="genre" value="<%= games.platform%>">
+
+    <br><br>
+
      <label>Hours Played:</label>
      <input type="number" name="hoursPlayed" value="<%= games.hoursPlayed %>">
+
+    <br><br>
 
      <label>Completed:</label>
     <select name="completed">
@@ -22,10 +39,11 @@
     <option value="false" <%= !games.completed ? "selected": ""%>>No</option>
     </select>
 
-    <button>Update Game</button>
-    
-    <!-- The ? in html (or ejs here) is a basic if-else statement. "checked" turns the checkbox on, and the : "" basically does nothing.  -->
-     <!-- Basically, we are rendering checked, only if game.completed is true. -->
+    <br><br>
+    <button>Update Game Details</button>
+    </form>
 
+    <!-- The ? in html (or ejs here) is a basic if-else statement. "checked" turns the checkbox on, and the : "" basically does nothing.  -->
+    <!-- Basically, we are rendering checked, only if game.completed is true. -->
   </body>
 </html>

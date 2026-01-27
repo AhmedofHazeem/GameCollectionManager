@@ -33,14 +33,14 @@ router.get("/show", async (req, res) => {
 
 //editing a game (by ID) -- GET
 
-router.post("/:id", async (req, res) => {
-  await Game.findByIdAndUpdate(req.params.id, req.body);
-  res.redirect("/games/${req.params.id}/detail");
-});
-
 router.get("/:id/edit", async (req, res) => {
   const games = await Game.findById(req.params.id);
   res.render("edit-game.ejs", { games });
+});
+
+router.post("/:id/edit", async (req, res) => {
+  await Game.findByIdAndUpdate(req.params.id, req.body);
+  res.redirect(`/games/${req.params.id}/detail`);
 });
 
 router.get("/:id/detail", async (req, res) => {
