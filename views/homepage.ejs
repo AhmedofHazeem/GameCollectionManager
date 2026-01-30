@@ -3,17 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
+    <title>Game Collection Manager</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap"
+    />
+
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
     <%- include('navbar') %>
 
-    <h1>Welcome to my Website</h1>
-    <a href="/games/test">Test page</a>
-    <br />
-    <a href="/games/create">Create A Game</a>
-    <br />
-    <a href="/games/allgames">See all your games</a> 
+    <h1 class="main-header">My Game Manager</h1>
+    <p>Track, edit, and manage all your games in one place.</p>
+    <div class="home-actions">
+      <a class="card" href="/games/create">➕Add A Game</a>
+      <a class="card" href="/games/allgames">👾View your collection</a>
+    </div>
   </body>
 </html>

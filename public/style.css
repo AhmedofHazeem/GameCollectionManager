@@ -1,11 +1,96 @@
-h1 {
-    color: #D4DE95;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+.main-header {
+  color: #4f46e5;
 }
 
 body {
-    background-color: #3d4127;
+  font-family: "Inter", sans-serif;
+  background-color: #f4f6f8;
+  color: #222;
 }
 
-a{
-    color: #D4DE95 
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  background-color: #111827;
+}
+
+.logo {
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  color: #fff;
+}
+
+.nav-links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #e5e7eb;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: #fff;
+}
+
+.signup {
+  background: #4f46e5;
+  padding: 8px 14px;
+  border-radius: 6px;
+}
+
+.logout {
+  color: #f87171;
+}
+
+.home {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.home h1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 42px;
+  margin-bottom: 12px;
+}
+
+.home p {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.home-actions {
+  display: flex;
+  gap: 24px;
+}
+
+.card {
+  background: white;
+  padding: 24px 32px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #111;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
 }

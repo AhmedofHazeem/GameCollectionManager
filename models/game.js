@@ -14,7 +14,10 @@ const gameSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  genre: String,
+  genre: {
+    type: String,
+    required: true,
+  },
   hoursPlayed: Number,
   completed: Boolean,
   rating: {

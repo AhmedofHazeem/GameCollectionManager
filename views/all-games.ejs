@@ -1,26 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>These are all your games</h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Games</title>
 
-    <ul>
-        <% games.forEach((aGame) => { %>
-            <li>
-                <a href="/games/<%=aGame._id%>/detail" method="get"><%= aGame.gameName %></a>
-            </li>
-            <form action="/games/<%=aGame._id%>/delete" method="post">
-              <button>Delete</button>
+  <!-- Google Fonts (same as homepage) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/allgames.css" />
+</head>
+
+<body>
+
+  <%- include('navbar') %>
+
+  <main class="all-games">
+    <h1>Your Game Collection</h1>
+
+    <% if (games.length === 0) { %>
+      <p class="empty">You haven't added any games yet 🎮</p>
+    <% } %>
+
+    <div class="games-grid">
+      <% games.forEach((game) => { %>
+        <div class="game-card">
+
+          <h2><%= game.gameName %></h2>
+          <p class="platform"><%= game.platform %></p>
+
+          <p class="status"> 
+            Status:
+            <span class="<%= game.completed ? 'done' : 'pending' %>">
+              <%= game.completed ? "Completed ✅" : "Not completed ❌" %>
+            </span>
+          </p>
+
+          <div class="actions">
+            <a class="view" href="/games/<%= game._id %>/detail">View</a>
+
+            <form action="/games/<%= game._id %>/delete" method="POST"
+                  onsubmit="return confirm('Delete this game?')"> 
+                  <!-- I used AI for the return confirm (the alternative way to do it was a lot more complicated)-->
+              <button class="delete">Delete</button>
             </form>
-            <form action="/games/<%=aGame._id%>/"></form>
-            
-            <% }) %>
-    </ul>
+          </div>
 
-    <a href="/">Go Back</a>
-  </body>
+        </div>
+      <% }) %>
+    </div>
+
+    <a class="back" href="/">← Back to Home</a>
+  </main>
+
+</body>
 </html>
