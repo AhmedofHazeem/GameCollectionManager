@@ -4,28 +4,52 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <h1>Add your game here!</h1>
-    <!-- SideNote: Keep a link for other stuff (navbar)  -->
-    <a href="/">Go Back</a>
-    <form action="/games" method="post">
-      <label>Game Name: </label>
-      <input name="gameName" type="text" />
-      <br />
-      <label>Platform:</label>
-      <input name="platform" type="text" />
-      <br />
-      <label>Genre:</label>
-      <input name="genre" type="text" />
-      <br />
-      <label>Hours Played:</label>
-      <input name="hoursPlayed" type="number" />
-      <br />
-      <label>Completed:</label>
-      <input name="completed" type="checkbox" value="true" />
-      <br />
-      <button>Submit Your Game</button>
-    </form>
+    <%- include('navbar') %>
+
+    <div class="form-page">
+      <div class="form-card">
+        <h1>Add a New Game 🎮</h1>
+        <p>Fill in the details to add it in your collection!</p>
+
+        <form action="/games" method="post">
+          <div class="form-group">
+            <label>Game Name: </label>
+            <input name="gameName" type="text" />
+          </div>
+          <div class="form-group">
+            <label>Platform:</label>
+            <input name="platform" type="text" />
+          </div>
+          <div class="form-group">
+            <label>Genre:</label>
+            <input name="genre" type="text" />
+          </div>
+
+          <div class="form-group">
+            <label>Hours Played:</label>
+            <input name="hoursPlayed" type="number" min="0" />
+          </div>
+
+          <div class="form-checkbox">
+            <label>Completed:</label>
+            <input name="completed" type="checkbox" value="true" />
+          </div>
+
+          <div class="form-actions">
+            <a href="/" class="button-secondary">← Go Back</a>
+            <button class="button-primary">Submit Game</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </body>
 </html>
