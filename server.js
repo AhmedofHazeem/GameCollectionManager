@@ -42,10 +42,10 @@ connectToDB(); // connect to database
 // Routes go here
 app.use("/auth", authController);
 app.use("/", indexController);
-app.use("/games", gamesController);
 
 // PROTECTED ROUTES:
-app.use(isSignedIn);
+app.use("/games", isSignedIn, gamesController);
+
 // Everything under the user NEEDS to be logged in to se
 
 app.listen(3000, () => {

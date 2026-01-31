@@ -15,13 +15,16 @@ router.get("/create", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  await Game.create(req.body);
+  await Game.create({
+    ...req.body,
+    owner: req.session.user._id,
+  });
   //add a display or alert that shows that game added successfully.
   res.redirect("/games/create");
 });
 
 router.get("/allgames", async (req, res) => {
-  const games = await Game.find();
+  const games = await Game.find({ owner: req.session.user._id });
   res.render("all-games.ejs", { games });
 });
 
@@ -34,23 +37,42 @@ router.get("/show", async (req, res) => {
 //editing a game (by ID) -- GET
 
 router.get("/:id/edit", async (req, res) => {
-  const games = await Game.findById(req.params.id);
+  const games = await Game.findOne({
+    _id: req.params.id,
+    owner: req.session.user._id,
+  });
+  if (!games) return res.redirect("/games/allgames");
+
   res.render("edit-game.ejs", { games });
 });
 
 router.post("/:id/edit", async (req, res) => {
-  await Game.findByIdAndUpdate(req.params.id, req.body);
+  await Game.findOneAndUpdate(
+    {
+      _id: req.params.id,
+      owner: req.session.user._id,
+    },
+    req.body,
+  );
   res.redirect(`/games/${req.params.id}/detail`);
 });
 
 router.get("/:id/detail", async (req, res) => {
-  const games = await Game.findById(req.params.id);
-  res.render("game-details.ejs", { games });
+  const games = await Game.findOne({
+    _id: req.params.id,
+    owner: req.session.user._id,
+  });
+
+  if (!games) return res.redirect("/games/allgames");
+  res.render("game-details.ejs", { games: games });
 });
 
 //Deleting a game (by ID too) -- DELETE
 router.post("/:id/delete", async (req, res) => {
-  await Game.findByIdAndDelete(req.params.id);
+  await Game.findOneAndDelete({
+    _id: req.params.id,
+    owner: req.session.user._id,
+  });
   res.redirect("/");
 });
 
