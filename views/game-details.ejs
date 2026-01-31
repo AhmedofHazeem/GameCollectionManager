@@ -18,33 +18,32 @@
   <body>
     <%- include('navbar') %>
 
-    <h1><%= games.gameName %></h1>
+    <div class="details-page">
+      <div class="details-card">
+        <h1><%= games.gameName %></h1>
 
-    <p><strong>Platform: </strong> <%= games.platform %></p>
-    <p><strong>Genre: </strong><%= games.genre || "Not specified" %></p>
+        <div class="details-list">
+          <p><strong>Platform: </strong> <%= games.platform %></p>
+        <p><strong>Genre: </strong><%= games.genre || "Not specified" %></p>
     <p><strong>Hours played: </strong> <%= games.hoursPlayed ?? 0 %></p>
-
     <p>
       <strong>Completed:</strong>
-      <%= games.completed ? "Yes ✅" : "No ⏳" %>
+      <%= games.completed ? "Yes ✅" : "No ⌛" %>
+      <!-- Used windows + . for emojis -->
     </p>
-
     <% if (games.rating) { %>
-      <p><strong>Rating:</strong> <%= games.rating / 5 %> ⭐</p>
+      <p><strong>Rating:</strong> <%= games.rating %> / 5 ⭐</p>
     <% } %>
+        </div>
+        <div class="details-action">
+          <a href="/games/<%= games._id %>/edit" class="btn-primary">✏️Edit</a>
+          <form action="/games/<%= games._id %>/delete" method="post">
+            <button class="btn-danger">🗑️ Delete</button>
+          </form>
 
-    <hr>
-
-    <a href="/games/<%= games._id%>/edit">Edit Game</a>
-
-    <form action="/games/<%= games._id%>/delete" method="post" style="display: inline">
-      <br>
-      <button type="submit"> 🗑️ Delete Game</button>
-      </form>
-
-      <br>
-      <a href="/games/allgames">Back to all games</a>
-
-
+          <a href="/games/allgames" class="btn-secondary">⬅ Back</a>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
