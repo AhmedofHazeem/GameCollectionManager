@@ -1,49 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>Edit your game details</h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit Game</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <%- include('navbar') %>
 
-    <a href="/games/<%=games._id%>/detail">Go Back</a>
+  <div class="page">
+    <div class="card-container">
+      <h1>Edit Game</h1>
 
-    <form action="/games/<%= games._id%>/edit" method="post">
-    <br><br>
+      <form action="/games/<%= games._id %>/edit" method="post">
+        <div class="form-group">
+          <label>Game Name</label>
+          <input type="text" name="gameName" value="<%= games.gameName %>" />
+        </div>
 
-    <label>Game Name:</label>
-    <input type="text" name="gameName" value="<%= games.gameName %>" />
+        <div class="form-group">
+          <label>Platform</label>
+          <input type="text" name="platform" value="<%= games.platform %>" />
+        </div>
 
-    <br><br>
+        <div class="form-group">
+          <label>Genre</label>
+          <input type="text" name="genre" value="<%= games.genre %>" />
+        </div>
 
-    <label>Platform:</label>
-    <input type="text" name="platform" value="<%= games.platform %>" />
+        <div class="form-group">
+          <label>Hours Played</label>
+          <input type="number" name="hoursPlayed" value="<%= games.hoursPlayed %>" />
+        </div>
 
-    <br><br>
+        <div class="form-group">
+          <label>Completed</label>
+          <select name="completed">
+            <option value="true" <%= games.completed ? "selected" : "" %>>Yes</option>
+            <option value="false" <%= !games.completed ? "selected" : "" %>>No</option>
+              <!-- The ? in html (or ejs here) is a basic if-else statement. "checked" turns the checkbox on, and the : "" basically does nothing.  -->
+              <!-- Basically, we are rendering checked, only if game.completed is true. -->
+          </select>
+        </div>
 
-    <label>Genre:</label>
-    <input type="text" name="genre" value="<%= games.platform%>">
+        <button class="btn-primary">Update Game</button>
+      </form>
 
-    <br><br>
-
-     <label>Hours Played:</label>
-     <input type="number" name="hoursPlayed" value="<%= games.hoursPlayed %>">
-
-    <br><br>
-
-     <label>Completed:</label>
-    <select name="completed">
-    <option value="true" <%= games.completed ? "selected" : "" %>>Yes</option>
-    <option value="false" <%= !games.completed ? "selected": ""%>>No</option>
-    </select>
-
-    <br><br>
-    <button>Update Game Details</button>
-    </form>
-
-    <!-- The ? in html (or ejs here) is a basic if-else statement. "checked" turns the checkbox on, and the : "" basically does nothing.  -->
-    <!-- Basically, we are rendering checked, only if game.completed is true. -->
-  </body>
+      <a class="btn-link" href="/games/<%= games._id %>/detail">← Back to details</a>
+    </div>
+  </div>
+</body>
 </html>
+
